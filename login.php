@@ -27,20 +27,14 @@ if(isset($_POST["username"])&&isset($_POST["password"]))
 include('dbconfig.php');
 $username=$_POST["username"];
 $password=$_POST["password"];
-//print $username.$password;
 
 if($conn){
     $sql = "SELECT count(*)as total FROM demo WHERE USERNAME='$username' and PASSWORD = '$password'";
-    // $result = mysqli_query($conn, $sql);
     $result=mysqli_query($conn,$sql);
     $data=mysqli_fetch_assoc($result);
     
-    //if ($result->num_rows > 0) {
     if($data['total']==1){
-        // output data of each row
-        // while($row = $result->fetch_assoc()) {
-        //     echo "id: " . $row["id"]. "<br>Name: " . $row["username"]. "<br>Password: " . $row["password"]. "<br>";
-  
+
     
     ?>
 
@@ -81,32 +75,7 @@ if($conn){
                 <h2>Blah Blah</h2>
                 <p>Even More Blah! Blah!...Blah!</p>
                 </div>
-                <!-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                <div class="img-box">
-                    <img src="http://nabeel.co.in/files/bootsnipp/team/3.jpg" class="img-responsive">
-                    <ul class="text-center">
-                    <a href="#"><li><i class="fa fa-facebook"></i></li></a>
-                    <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-                    <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-                    </ul>
-                </div>
-                <h1>Heather H</h1>
-                <h2>Co-founder/ Marketing</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                <div class="img-box">
-                    <img src="http://nabeel.co.in/files/bootsnipp/team/4.jpg" class="img-responsive">
-                    <ul class="text-center">
-                    <a href="#"><li><i class="fa fa-facebook"></i></li></a>
-                    <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-                    <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-                    </ul>
-                </div>
-                <h1>John Doe</h1>
-                <h2>Designer</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div> -->
+
                 
             </div>
             </div>
