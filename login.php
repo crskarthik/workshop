@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if(isset($_POST["username"])&&isset($_POST["password"]))
 {
 ?>
@@ -25,9 +26,12 @@ if(isset($_POST["username"])&&isset($_POST["password"]))
 <body>
 <?php
 include('dbconfig.php');
+// Escape String method which avoid illegal variables from accessing database
+// $username=mysqli_escape_string($_POST["username"]);
+// $password=mysqli_escape_string($_POST["password"]);
+
 $username=$_POST["username"];
 $password=$_POST["password"];
-
 if($conn){
     $sql = "SELECT count(*)as total FROM demo WHERE USERNAME='$username' and PASSWORD = '$password'";
     $result=mysqli_query($conn,$sql);
@@ -47,7 +51,7 @@ if($conn){
         <hr>
         <div class="col-md-10 col-md-offset-1">
             <div class="col-lg-12">
-            <h6 class="description">OUR TEAM</h6>
+            <h6 class="description">OUR TEAM<br><?php echo $sql; ?></h6>
             <div class="row pt-md">
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
                 <div class="img-box">
@@ -58,7 +62,7 @@ if($conn){
                     <a href="http://linkedin.com/in/karthikcrs/" target="_blank"><li><i class="fa fa-linkedin"></i></li></a>
                     </ul>
                 </div>
-                <h1>C R S Karthik</h1>
+                <h1>Karthik</h1>
                 <h2>Mobile app, Web & Mainframe Developer</h2>
                 <p>Nothing much to say!!!</p>
                 </div>
@@ -71,7 +75,33 @@ if($conn){
                     <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
                     </ul>
                 </div>
-                <h1>Sai Praneetha</h1>
+                <h1>Praneetha</h1>
+                <h2>Blah Blah</h2>
+                <p>Even More Blah! Blah!...Blah!</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                <div class="img-box">
+                    <img src="assets/img/vishal.jpeg" class="img-responsive">
+                    <ul class="text-center">
+                    <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                    <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                    <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                    </ul>
+                </div>
+                <h1>Vishal</h1>
+                <h2>Blah Blah</h2>
+                <p>Even More Blah! Blah!...Blah!</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                <div class="img-box">
+                    <img src="assets/img/siva.jpeg" class="img-responsive">
+                    <ul class="text-center">
+                    <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                    <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                    <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                    </ul>
+                </div>
+                <h1>Sai Kumar</h1>
                 <h2>Blah Blah</h2>
                 <p>Even More Blah! Blah!...Blah!</p>
                 </div>
@@ -87,8 +117,9 @@ if($conn){
     <?php
 
     } else {
+        echo $sql;
        ?>
-        <script>window.location.href="index.php?error=<?php echo base64_encode("error");?>"</script>
+        <!-- <script>window.location.href="index.php?error=<?php echo base64_encode("error");?>"</script> -->
        <?php
 
     }
